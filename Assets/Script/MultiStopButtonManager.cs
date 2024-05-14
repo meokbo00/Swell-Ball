@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainButtonManager : MonoBehaviour
+//멀티플레이에 있는 일시중지 버튼기능을 담당하는 스크립트입니다
+public class MultiStopButtonManager : MonoBehaviour
 {
     public Button Stopbtn;
     public Button Xbtn;

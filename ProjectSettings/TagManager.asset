@@ -21,6 +21,11 @@ TagManager:
   - P2Item
   - Stage
   - StageBall
+  - StageDeadZone
+  - SDZ_Top
+  - SDZ_Bottom
+  - SDZ_Left
+  - SDZ_Right
   layers:
   - Default
   - TransparentFX

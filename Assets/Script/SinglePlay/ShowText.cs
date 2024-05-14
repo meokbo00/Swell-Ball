@@ -15,6 +15,7 @@ public class ShowText : MonoBehaviour
 {
     public TMP_Text chatting;
     public GameObject ChatBox;
+    public string Text;
     private List<Chat> chats;
     private int currentChatIndex = 0;
     private bool isTyping = false;
@@ -22,7 +23,7 @@ public class ShowText : MonoBehaviour
     void Start()
     {
         ChatBox.gameObject.SetActive(true);
-        var asset = Resources.Load<TextAsset>("text");
+        var asset = Resources.Load<TextAsset>(Text);
         var json = asset.text;
         chats = JsonConvert.DeserializeObject<List<Chat>>(json);
         DisplayCurrentChat();
