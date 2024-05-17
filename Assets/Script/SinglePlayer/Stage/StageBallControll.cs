@@ -56,16 +56,16 @@ public class StageBallController : MonoBehaviour
                 StageStart.gameObject.SetActive(true);
                 break;
             case "SDZ_Bottom":
-                transform.Translate(0, 190, 0);
+                transform.Translate(0, 390, 0);
                 break;
             case "SDZ_Top":
-                transform.Translate(0, -190, 0);
+                transform.Translate(0, -390, 0);
                 break;
             case "SDZ_Left":
-                transform.Translate(170, 0, 0);
+                transform.Translate(350, 0, 0);
                 break;
             case "SDZ_Right":
-                transform.Translate(-170, 0, 0);
+                transform.Translate(-350, 0, 0);
                 break;
         }
     }

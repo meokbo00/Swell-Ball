@@ -23,7 +23,7 @@ public class Enemy1center : MonoBehaviour
         textMesh.alignment = TextAlignmentOptions.Center;
         textMesh.autoSizeTextContainer = true;
         textMesh.rectTransform.localPosition = Vector3.zero;
-        textMesh.sortingOrder = 1;
+        textMesh.sortingOrder = 3;
     }
 
     private void Update()
