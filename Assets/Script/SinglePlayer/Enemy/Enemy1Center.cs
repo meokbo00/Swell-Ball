@@ -33,7 +33,7 @@ public class Enemy1center : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "P1ball" || coll.gameObject.tag == "P2ball")
+        if (coll.gameObject.tag == "P1ball" || coll.gameObject.tag == "P2ball" || coll.gameObject.tag == "P1Item" || coll.gameObject.tag == "P2Item")
         {
             if (randomNumber > 0)
             {
@@ -42,7 +42,7 @@ public class Enemy1center : MonoBehaviour
             }
             if (randomNumber <= 0)
             {
-                Destroy(gameObject);
+                Destroy(transform.parent.gameObject); // 부모 오브젝트 삭제
             }
         }
     }

@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 public class Enemy1Fire : MonoBehaviour
 {
     public GameObject enemyBulletPrefab;
-    public static float shotDistance;
-    public static Vector3 shotDirection;
+    public static float ShotPower;
+    public static Vector3 ShotDirection;
     void Start()
     {
         StartCoroutine(SpawnBullets());
@@ -21,14 +21,13 @@ public class Enemy1Fire : MonoBehaviour
             Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
 
             CalculateRandomShot();
-
         }
     }
     private void CalculateRandomShot()
     {
-        shotDistance = Random.Range(7f, 13f); // ???? ??, ????? ?????? ???? ????
-        float x = Random.Range(0f, 360f); // 0???? 360?? ?????? ????
+        ShotPower = Random.Range(4f, 8f);
+        float x = Random.Range(0f, 360f);
         float y = Random.Range(0f, 360f);
-        shotDirection = new Vector3(x, y, 0).normalized; // ?????? ????? ???
+        ShotDirection = new Vector3(0, -1, 0).normalized;
     }
 }

@@ -16,6 +16,8 @@ public class EnemyBulletControl : MonoBehaviour
     private TextMeshPro textMesh;
     private bool hasBeenReleased = false;
 
+    public int BallMinHP = 1;
+    public int BallMaxHP = 6;
     //public AudioSource HitSound;
     //public AudioSource SwellSound;
 
@@ -26,9 +28,9 @@ public class EnemyBulletControl : MonoBehaviour
         GameObject textObject = new GameObject("TextMeshPro");
         textObject.transform.parent = transform;
         textMesh = textObject.AddComponent<TextMeshPro>();
-        randomNumber = Random.Range(1, 6);
+        randomNumber = Random.Range(BallMinHP, BallMaxHP);
         textMesh.text = randomNumber.ToString();
-        textMesh.fontSize = 4;
+        textMesh.fontSize = 2;
         textMesh.alignment = TextAlignmentOptions.Center;
         textMesh.autoSizeTextContainer = true;
         textMesh.rectTransform.localPosition = Vector3.zero;
@@ -38,7 +40,6 @@ public class EnemyBulletControl : MonoBehaviour
 
     private void Update()
     {
-       
         Move();
         expand();
     }
@@ -77,7 +78,7 @@ public class EnemyBulletControl : MonoBehaviour
         //{
         //    HitSound.Play();
         //}
-        if ((coll.gameObject.tag == "P1ball" || coll.gameObject.tag == "P2ball" || coll.gameObject.tag == "P1Item" || coll.gameObject.tag == "P2Item") && rigid == null)
+        if ((coll.gameObject.tag == "P1ball" || coll.gameObject.tag == "P2ball" || coll.gameObject.tag == "P1Item" || coll.gameObject.tag == "P2Item" || coll.gameObject.tag == "EnemyBall") && rigid == null)
         {
             if (randomNumber > 0)
             {
@@ -93,7 +94,7 @@ public class EnemyBulletControl : MonoBehaviour
         {
             Vector2 dir = Vector2.Reflect(lastVelocity.normalized, coll.contacts[0].normal);
             if (rigid != null)
-                rigid.velocity = dir * Mathf.Max(lastVelocity.magnitude, 0f); // °¨¼ÓÇÏÁö ¾Ê°í ¹Ý»ç¸¸ ÁøÇà
+                rigid.velocity = dir * Mathf.Max(lastVelocity.magnitude, 0f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½Ý»ç¸¸ ï¿½ï¿½ï¿½ï¿½
         }
         this.iscolliding = true;
 
@@ -111,10 +112,10 @@ public class EnemyBulletControl : MonoBehaviour
     }
     public void LaunchBall()
     {
-        if (rigid != null)
+        if (rigid != null && !hasBeenReleased)
         {
-            rigid.velocity = Enemy1Fire.shotDirection * Enemy1Fire.shotDistance; // Enemy1Fire¿¡¼­ °ª °¡Á®¿Í¼­ ±¸Ã¼ ¹ß»ç
-            hasBeenReleased = true; // ÃÖÃÊ Å¬¸¯ÀÌ µÇ¾úÀ½À» Ç¥½Ã
+            rigid.velocity = Enemy1Fire.ShotDirection * Enemy1Fire.ShotPower;
+            hasBeenReleased = true;
         }
     }
 }
